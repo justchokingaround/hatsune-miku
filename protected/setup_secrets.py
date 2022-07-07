@@ -4,7 +4,7 @@ from secrets import SECRETS_STORE_PATH
 
 
 secrets = {
-    "OPEN_SOURCE_TOKEN": None,
+    "TUM_HUB_TOKEN": None,
     "GUILD_ID": None
 }
 
