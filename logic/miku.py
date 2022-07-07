@@ -11,6 +11,7 @@ bot = commands.Bot(
     command_prefix='/',
     case_insensitive=True,
     help_command=None,
+    intents=discord.Intents.all(),
     owner_id=453579828281475084,
     activity=ACTIVITIES['SONG']
         )
