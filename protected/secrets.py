@@ -5,7 +5,7 @@ import json
 SECRETS_STORE_PATH = "./.secrets_store.json"
 
 # List of secrets
-TUM_HUB_TOKEN = "GH_SECRETS_OPEN_SOURCE_TOKEN"
+TUM_HUB_TOKEN = "GH_SECRETS_TUM_HUB_TOKEN"
 GUILD_ID = "GH_SECRETS_GUILD_ID"
 
 # For local debug
