@@ -4,6 +4,10 @@ import httpx
 import lxml.html
 from discord.ext import commands
 from logic.constants import *
+from protected import secrets
+
+GUILD_ID = secrets.GUILD_ID
+TUM_HUB_TOKEN = secrets.TUM_HUB_TOKEN
 
 bot = commands.Bot(
     command_prefix='/',
@@ -17,7 +21,7 @@ bot = commands.Bot(
 async def on_ready():
     print("u let me in as {0.user} uwu".format(bot))
 
-@bot.event
+@bot.event(guild_ids=[int(GUILD_ID)])
 async def on_message(message):
     if message.author == bot.user:
         return
@@ -32,7 +36,7 @@ async def on_message(message):
         await message.channel.send("Hi {0.author.mention} \:)".format(message))
         return
 
-@bot.slash_command(description="wiki link")
+@bot.slash_command(description="wiki link", guild_ids=[int(GUILD_ID)])
 async def wiki(ctx: discord.ApplicationContext):
     if ctx.author.id in [NICKI, NICKI_ALT]:
         await ctx.respond("Nicholas I beg you to stop harassing me please, "
@@ -40,7 +44,7 @@ async def wiki(ctx: discord.ApplicationContext):
         return
     await ctx.respond("https://vocaloid.fandom.com/wiki/Hatsune_Miku")
 
-@bot.slash_command(description="youtube channel link")
+@bot.slash_command(description="youtube channel link", guild_ids=[int(GUILD_ID)])
 async def channel(ctx: discord.ApplicationContext):
     if ctx.author.id in [NICKI, NICKI_ALT]:
         await ctx.respond("Nicholas I beg you to stop harassing me please, "
@@ -48,7 +52,7 @@ async def channel(ctx: discord.ApplicationContext):
         return
     await ctx.respond("https://www.youtube.com/channel/UCZdOM39GFOvnrNTH5mbbMxg/videos")
 
-@bot.slash_command(description="merch link")
+@bot.slash_command(description="merch link", guild_ids=[int(GUILD_ID)])
 async def merch(ctx: discord.ApplicationContext):
     if ctx.author.id in [NICKI, NICKI_ALT]:
         await ctx.respond("Nicholas I beg you to stop harassing me please, "
@@ -56,7 +60,7 @@ async def merch(ctx: discord.ApplicationContext):
         return
     await ctx.respond("https://hatsune-miku.backstreetmerch.com/")
 
-@bot.slash_command(description="displays image")
+@bot.slash_command(description="displays image", guild_ids=[int(GUILD_ID)])
 async def image(ctx: discord.ApplicationContext):
     if ctx.author.id in [NICKI, NICKI_ALT]:
         await ctx.respond("Nicholas I beg you to stop harassing me please, "
@@ -69,7 +73,7 @@ async def image(ctx: discord.ApplicationContext):
             await ctx.respond(img.get("src"))
             break
 
-@bot.slash_command(description="displays random image")
+@bot.slash_command(description="displays random image", guild_ids=[int(GUILD_ID)])
 async def random_image(ctx: discord.ApplicationContext):
     if ctx.author.id in [NICKI, NICKI_ALT]:
         await ctx.respond("Nicholas I beg you to stop harassing me please, "
@@ -81,7 +85,7 @@ async def random_image(ctx: discord.ApplicationContext):
         img = random.choice(html.cssselect(".pi-image-thumbnail"))
         await ctx.respond(img.get("src"))
 
-@bot.slash_command(description="who is hatsune miku?")
+@bot.slash_command(description="who is hatsune miku?", guild_ids=[int(GUILD_ID)])
 async def etymology(ctx: discord.ApplicationContext):
     if ctx.author.id in [NICKI, NICKI_ALT]:
         await ctx.respond("Nicholas I beg you to stop harassing me please, "
@@ -95,7 +99,7 @@ async def etymology(ctx: discord.ApplicationContext):
             await ctx.respond(info)
             break
 
-@bot.slash_command(description="facts about hatsune miku")
+@bot.slash_command(description="facts about hatsune miku", guild_ids=[int(GUILD_ID)])
 async def facts(ctx: discord.ApplicationContext):
     if ctx.author.id in [NICKI, NICKI_ALT]:
         await ctx.respond("Nicholas I beg you to stop harassing me please, "
@@ -109,7 +113,7 @@ async def facts(ctx: discord.ApplicationContext):
             await ctx.respond(info)
             break
 
-@bot.slash_command(description="hatsune miku profile")
+@bot.slash_command(description="hatsune miku profile", guild_ids=[int(GUILD_ID)])
 async def profile(ctx: discord.ApplicationContext):
     if ctx.author.id in [NICKI, NICKI_ALT]:
         await ctx.respond("Nicholas I beg you to stop harassing me please, "
@@ -123,7 +127,7 @@ async def profile(ctx: discord.ApplicationContext):
             await ctx.respond(info)
             break
 
-@bot.slash_command(description="help")
+@bot.slash_command(description="help", guild_ids=[int(GUILD_ID)])
 async def help(ctx: discord.ApplicationContext):
     embed = discord.Embed(title="Hatsune Miku Bot Commands", description="", color=0x7289da)
     embed.set_author(name="Hatsune Miku Bot", url="https://discordapp.com", icon_url="https://icon-library.com/images/2018/1216143_hatsune-miku-hachune-miku-vocaloid-hd-png-download.png")
