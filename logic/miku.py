@@ -21,7 +21,7 @@ bot = commands.Bot(
 async def on_ready():
     print("u let me in as {0.user} uwu".format(bot))
 
-@bot.event(guild_ids=[int(GUILD_ID)])
+@bot.event
 async def on_message(message):
     if message.author == bot.user:
         return
