@@ -71,5 +71,4 @@ async def help(ctx: discord.ApplicationContext):
     await ctx.respond(embed=embed)
 
 def activate():
-    print(TUM_HUB_TOKEN)
     bot.run(TUM_HUB_TOKEN)
