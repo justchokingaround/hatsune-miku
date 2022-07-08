@@ -3,15 +3,11 @@ import json
 from secrets import SECRETS_STORE_PATH
 
 
-secrets = {
-    "TUM_HUB_TOKEN": None,
-    "GUILD_ID": None
-}
+secrets = {"TUM_HUB_TOKEN": None, "GUILD_ID": None}
 
 
 if os.path.exists(SECRETS_STORE_PATH):
-    res = input(
-        "Do you want to overwrite existing secret tokens? yes/no: ")
+    res = input("Do you want to overwrite existing secret tokens? yes/no: ")
 
     if res.lower() != "yes":
         quit()
