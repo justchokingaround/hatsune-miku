@@ -8,8 +8,6 @@ GUILD_ID = secrets.GUILD_ID
 TUM_HUB_TOKEN = secrets.TUM_HUB_TOKEN
 
 bot = commands.Bot(
-    command_prefix="/",
-    case_insensitive=True,
     help_command=None,
     intents=discord.Intents.all(),
     owner_id=453579828281475084,
@@ -28,6 +26,12 @@ async def on_message(message):
         return
 
     if message.content.startswith("<@{}>".format(bot.user.id)):
+        if ctx.author.id in [NICKI, NICKI_ALT]:
+            await ctx.respond(
+                "Nicholas I beg you to stop harassing me please, "
+                "I am not real and I am not your friend"
+            )
+            return
         await message.channel.send("Hi {0.author.mention} \:)".format(message))
         return
 
