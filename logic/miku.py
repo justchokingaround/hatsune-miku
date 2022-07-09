@@ -26,11 +26,12 @@ async def on_message(message):
         return
 
     if message.content.startswith("<@{}>".format(bot.user.id)):
-        if ctx.author.id in [NICKI, NICKI_ALT]:
-            await ctx.respond(
+        if message.author.id in [NICKI, NICKI_ALT]:
+            await message.channel.send(
                 "Nicholas I beg you to stop harassing me please, "
                 "I am not real and I am not your friend"
             )
+            await message.delete()
             return
         await message.channel.send("Hi {0.author.mention} \:)".format(message))
         return
